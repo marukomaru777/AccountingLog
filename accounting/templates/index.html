@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+{% block body %}
+<!-- tool bar -->
+<div class="col-12 row" style="margin: 0; padding-left: 0;">
+    <div class="col-sm-3 col-12"><input type="text" class="form-control" id="search-date"></div>
+    <div class="col-sm-9 d-sm-block d-none text-right"><button type="button" class="btn btn-dark">新增</button>
+    </div>
+</div>
+{% for result_item in result %}
+<!-- daily -->
+<div class="col-12 row daily-list">
+    <!-- daily summary -->
+    <div class="col-12 row sum">
+        <div class="col-4">{{ result_item.date }}</div>
+        <div class="col-8" style="text-align: right;">{{ result_item.sum }}</div>
+    </div>
+    {% for item in result_item.detail %}
+    <!-- daily detail -->
+    <div class="col-12 row detail-list">
+        <div class="col-12 row detail">
+            <!-- icon -->
+            <div class="col-sm-2 d-sm-block d-none icon">
+                <img src="{% static 'img/icon.png' %}" class="img-fluid">
+            </div>
+            <!-- description -->
+            <div class="col-sm-6 col-7 description">
+                <div class="col-12 class">{{ item.class }}</div>
+                <div class="col-12 tag">{{ item.tag }}</div>
+                <div class="col-sm-12 d-sm-block d-none info">{{ item.desc }}</div>
+            </div>
+            <div class="col-sm-4 col-5 row amount">
+                <p class="col-12 text-right" style="text-align: right;">{{ item.amount }}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endfor %}
+{% endblock %}

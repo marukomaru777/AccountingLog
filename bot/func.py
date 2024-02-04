@@ -9,7 +9,6 @@ from linebot.models import (
     QuickReply,
     QuickReplyButton,
     FlexSendMessage,
-    MessageAction,
     PostbackAction,
 )
 
